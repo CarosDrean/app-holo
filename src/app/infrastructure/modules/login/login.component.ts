@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../../service/login.service";
 import {Title} from "@angular/platform-browser";
+import {Notify} from 'notiflix/build/notiflix-notify-aio';
+
+import {LoginService} from "../../service/login.service";
 import {User, UserLogin} from "../../../models/user";
 
 @Component({
@@ -35,12 +37,12 @@ export class LoginComponent implements OnInit {
                                 const userLogin: UserLogin = res.data
 
                                 if (userLogin) {
+                                        Notify.success("Ingresando...")
                                         this.ls.sessionIn(userLogin.user.id, userLogin.user.type, userLogin.token);
                                 }
                         },
                         error => {
-                                console.log(error);
-                                console.log(error.error);
+                                Notify.failure(error.error.errors[0].message)
                         });
         }
 
