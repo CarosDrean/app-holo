@@ -1,0 +1,6 @@
+{
+        "apis": {
+                "api_master": "http://localhost:14000/api",
+                "api_particular_result": "http://localhost:10000/api/v1"
+        }
+}
